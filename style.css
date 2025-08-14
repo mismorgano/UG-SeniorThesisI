@@ -1,0 +1,25 @@
+ul {
+    list-style: none;
+}
+
+li {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pdf-item {
+    display: inline-block;
+    margin: 20px auto;
+
+}
+
+a {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+canvas {
+    border: 1pt solid black;
+}
