@@ -1,0 +1,53 @@
+Lindenstrauss1996:
+  type: chapter
+  title: b. Absolutely Summing Operators and Uniqueness of Unconditional Bases
+  author:
+  - Lindenstrauss, Joram
+  - Tzafriri, Lior
+  date: 1996
+  page-range: 63-75
+  url: https://doi.org/10.1007/978-3-662-53294-2_9
+  serial-number:
+    doi: 10.1007/978-3-662-53294-2_9
+    isbn: 978-3-662-53294-2
+  parent:
+    type: book
+    title: 'Classical Banach Spaces I and II: Sequence Spaces and Function Spaces'
+    publisher:
+      name: Springer Berlin Heidelberg
+      location: Berlin, Heidelberg
+
+
+Tomczak-Jaegermann1989:
+  type: book
+  title: Banach-Mazur Distances and Finite-Dimensional Operator Ideals
+  author: Nicole Tomczak-Jaegermann
+  date: 1989
+
+jarchow1995absolutely:
+  type: book
+  title: Absolutely Summing Operators
+  author:
+  - Diestel, Joe
+  - Jarchow, Hans
+  - Tonge, Andrew
+  date: 1995
+  publisher: Cambridge University Press
+  volume: 43
+  serial-number:
+    isbn: '0521431689'
+  parent:
+    type: book
+    title: Cambridge Studies in Advanced Mathematics
+
+
+Garling_2007:
+  type: chapter
+  title: Grothendieck’s inequality, type and cotype
+  author: Garling, D. J. H.
+  date: 2007
+  page-range: 302–324
+  parent:
+    type: book
+    title: 'Inequalities: A Journey into Linear Analysis'
+    publisher: Cambridge University Press
