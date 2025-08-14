@@ -1,6 +1,8 @@
 {
     "cSpell.words": [
+        "Grothendieck",
         "Grothendieck's",
         "Typst"
-    ]
+    ],
+    "tinymist.formatterMode": "typstfmt"
 }
