@@ -61,3 +61,16 @@ Wojtaszczyk_1991:
   parent:
     type: book
     title: Cambridge Studies in Advanced Mathematics
+  
+ResumeMR94682:
+  type: article
+  title: Résumé{} de la théorie métrique des produits tensoriels topologiques
+  author: Grothendieck, A.
+  date: 1953
+  page-range: 1-79
+  serial-number:
+    issn: 0373-1375
+  parent:
+    type: periodical
+    title: Bol. Soc. Mat. São Paulo
+    volume: 8
