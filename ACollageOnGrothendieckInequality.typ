@@ -1,5 +1,4 @@
-#import "@preview/ctheorems:1.1.3": thmbox, thmrules
-
+#import "@preview/ctheorems:1.1.3": thmbox, thmrules, thmproof
 
 
 // config
@@ -13,16 +12,24 @@
 #show: thmrules
 // envs
 #let theorem = thmbox("theorem", "Teorema")
+#let proof = thmproof("proof", "Demostración")
 
 // functions
 #let ip(x, y) = $angle.l #x, #y angle.r$
 #let l = $cal(l)$
+#let epsa = $epsilon.alt$
+#let dt = $d t$
 // macros
 
 #show "tq": [tal que]
 #show "tsq": [tales que]
 #show "Hs": [espacio de Hilbert]
+#show "Bs": [espacio de Banach]
+#show "rv": [variable aleatoria]
+#show "rvs": [variables aleatorias]
 
+
+#show "sucesion": [sucesión]
 // layout
 
 #align(center)[
@@ -30,6 +37,54 @@
     Un Collage de la desigualdad de Grothendieck
   ]
 ]
+
+= Demostraciones de la Desigualdad de Khintchine
+
+Version de @Tomczak-Jaegermann1989
+#theorem[Desigualdad de Khintchine][
+  Sea $1 <= p < infinity$. Entonces existen constantes positivas $A_p$ y $B_p$ tsq para toda sucesión de escalares ${a_i}$ uno
+  tiene que
+  $
+    A_p (sum_i abs(a_i)^2)^(1/2) <= (integral_0^1 abs(sum_i r_i (t) a_j)^p d t)^(1/p) <= B_p (sum_i abs(a_i)^2)^(1/2).
+  $
+  Más aún, $B_p <= p^(1/2)$
+]
+#proof[
+  Mostraremos primero el resultado para enteros. Sea $p in NN$ y $y in RR$, notemos que $abs(y)^p < p! (1 + abs(y)^p slash p!) <= p! e^abs(y)$.
+  Por lo cual, definiendo $f(t) = sum_(n <= m) a_n r_(n)(t)$, entonces se cumple que 
+  $
+    norm(f)_p^p = integral_0^1 abs(f(t))^p dt <= p! integral_0^1 e^abs(f(t)) dt <= p! integral_0^1 (e^f(t) + e^(-f(t)) ) dt.
+  $
+  Podemos normalizar $f$ de tal forma que $norm(f)_2 = (sum_(n<=m) a_n^2)^(1/2) = 1$,
+  luego, notemos que 
+  $
+    integral_0^1 e^(f(t)) dt = integral_0^1 exp(sum_(n <= m) a_n r_(n)(t)) dt = integral_0^1 product_(n<=m) exp(a_n r_(n)(t)) dt,
+  $
+  como las $r_n$ son rvs independientes se cumple que 
+  $
+    integral_0^1 e^(f(t)) dt &= product_(n<=m) integral_0^1 exp(a_n r_(n)(t)) dt = product_(n<=m) integral_0^1 1/2 e^(a_n) + 1/2 e^(-a_n) dt \
+                             &= product_(n<=m) cosh(a_n),
+  $
+  comparando con su serie de potencia obtenemos que 
+  $
+     product_(n<=m) cosh(a_n) <= product_(n<=m) exp(a_n^2 / 2) = exp(sum_(n<=m) a_n^2/2) = exp(1/2 sum_(n<=m) a_n^2) = e^(1slash 2).
+  $
+  Por simetría, también tenemos que $integral_0^1 e^(-f(t)) dt <= e^(1 slash 2)$, y por tanto 
+  $
+    norm(f)_p^p <= 2p! e^(1 slash 2).
+  $
+]
+
+Version que se encuentra en @Garling_2007
+#theorem[Desigualdad de Khintchine][
+  Existen constantes $A_p$ y $B_p$, para $0 < p < infinity$, tq si $a_1, dots, a_N$ son números reales y $epsa_1, dots, epsa_N$ son
+  rvs Bernoulli, entonces
+  $
+    A_p norm(s_N)_p <= sigma <= B_p norm(s_N)_p,
+  $
+  donde $s_N = sum_(n=1)^N epsa_n a_n$ y $sigma^2 = norm(s_N)_2^2 = sum_(n=1)^N a_n^2$
+]
+
 
 = Demostraciones de la Desigualdad de Grothendieck.
 
