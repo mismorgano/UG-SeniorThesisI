@@ -73,6 +73,39 @@ Version de @Tomczak-Jaegermann1989
   $
     norm(f)_p^p <= 2p! e^(1 slash 2).
   $
+  Para $2<= p < infinity$, por la monotonía de las normas $L_p$ se puede concluir, para $a_1, dots, a_m in RR$ arbitrarios, que
+  $
+    (sum_(n<=m) a_n^2)^(1/2) = norm(sum_(n<=m) a_n r_n)_2 <= norm(sum_(n<=m) a_n r_n)_p,
+  $
+  luego por la homogeneidad de las normas, tenemos que 
+  $
+    1/((sum_(n<=m) a_n^2)^(1/2)) norm(sum_(n<=m) a_n r_n)_p <= 1/((sum_(n<=m) a_n^2)^(1/2)) norm(sum_(n<=m) a_n r_n)_(ceil(p)) <= (2ceil(p)! e^(1 slash 2))^(1/ceil(p)),
+  $
+  por lo cual concluimos que 
+  $
+    (sum_(n<=m) a_n^2)^(1/2) <= norm(sum_(n<=m) a_n r_n)_p <= (2ceil(p)! e^(1 slash 2))^(1/ceil(p)) (sum_(n<=m) a_n^2)^(1/2),
+  $
+  como queremos.
+
+  Ahora, para el caso $ 0 < p < 2$. Sea $theta = (2-(p/2))^(-1)$, podemos notar que $0 < theta < 1$, asi $1/theta > 1$ y su conjugado es $1/(1-theta)$, ademas $p theta + 4(1-theta) = 2$, por lo cual aplicando la desigualdad de Hölder se cumple que 
+  $
+    integral_0^1 abs(f(t))^2 dt = integral_0^1 abs(f(t))^(p theta) abs(f(t))^(4 (1 - theta)) dt &<= (integral_0^1 (abs(f(t))^(p theta))^(1/theta) dt)^theta (integral_0^1 abs(f(t))^(4 (1 - theta))^(1/(1-theta)) dt)^(1-theta) \
+                            &= (integral_0^1 (abs(f(t))^p dt)^theta (integral_0^1 abs(f(t))^4 dt)^(1-theta),
+  $
+  lo cual se puede reescribir como $norm(f)_2^2 <= norm(f)_p^(p theta) norm(f)_4^(4(1-theta))$.
+  Por lo probado anteriormente tenemos que $norm(f)_4 <= B_4 norm(f)_2$, por lo cual 
+  $
+    norm(f)_2^2 <= norm(f)_p^(p theta) norm(f)_4^(4(1-theta)) <= norm(f)_p^(p theta) B_4^(4(1-theta)) norm(f)_2^(4(1-theta)),
+  $
+  y en consecuencia 
+  $
+    B_4^(-4(1-theta)) norm(f)_2^(2-4(1-theta)) = B_4^(p theta -2 )norm(f)_2^(p theta)<= norm(f)_p^(p theta),
+  $
+  obteniendo que 
+  $
+    B_4^(1 - 2slash p theta) norm(f)_2 <= norm(f)_p,
+  $
+  como $1 - 2slash p theta = 2 - 4slash p$, vemos que $B_4^(2 - 4slash p) norm(f)_2 <= norm(f)_p$. Luego, por la monotonía obtenemos que $B_4^(2 - 4slash p) norm(f)_2 <= norm(f)_p <= norm(f)_2$.
 ]
 
 Version que se encuentra en @Garling_2007
