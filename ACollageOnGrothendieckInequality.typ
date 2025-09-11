@@ -11,8 +11,8 @@
 
 #show: thmrules
 // envs
-#let theorem = thmbox("theorem", "Teorema")
-#let proof = thmproof("proof", "Demostración")
+#let theorem = thmbox("theorem", "Teorema", inset: 0em)
+#let proof = thmproof("proof", "Demostración", inset: 0em)
 
 // functions
 #let ip(x, y) = $angle.l #x, #y angle.r$
