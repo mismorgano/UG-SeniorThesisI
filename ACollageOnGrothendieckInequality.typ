@@ -145,7 +145,7 @@ La siguiente version la podemos encontrar en @jarchow1995absolutely #theorem[Des
   $
   como $1 - 2slash p theta = 2 - 4slash p$, vemos que $B_4^(2 - 4slash p) norm(f)_2 <= norm(f)_p$. Luego, por la
   monotonía obtenemos que $B_4^(2 - 4slash p) norm(f)_2 <= norm(f)_p <= norm(f)_2$.
-]<Khintchine_inequality_proof>
+]
 
 Version que se encuentra en @Garling_2007
 #theorem[Desigualdad de Khintchine][
@@ -207,10 +207,10 @@ Segunda version, encontrada en @jarchow1995absolutely
   la bola unitaria $B_H$ del Hs $H$. Dado que para cada $n$ solo consideremos un conjunto finito de vectores entonces
   solo es necesario considerar Hss separables.
 
-  Al igual que con la @Khintchine_inequality_proof de la desigualdad de Khintchine la idea es es poder embeber cualquier
-  Hs separable en $L_2[0, 1]$ que respete su producto interno. Para ello, de igual manera, utilizaremos las funciones de
-  Rademacher ${r_n}_n$ las cuales formal un conjunto ortonormal en $L$. La forma en que lo haremos sera la siguiente:
-  dado $x in H$, como $H$ tiene base ortonormal ${e_n}_n$ sabemos que $x = sum_n ip(x, e_n) e_n$ y ademas
+  Al igual que con la Demostración de @Khintchine_inequality la idea es es poder embeber cualquier Hs separable en
+  $L_2[0, 1]$ que respete su producto interno. Para ello, de igual manera, utilizaremos las funciones de Rademacher
+  ${r_n}_n$ las cuales formal un conjunto ortonormal en $L$. La forma en que lo haremos sera la siguiente: dado
+  $x in H$, como $H$ tiene base ortonormal ${e_n}_n$ sabemos que $x = sum_n ip(x, e_n) e_n$ y ademas
   $infinity > norm(x) = sum_(n) ip(x, e_n)$, asi podemos definir $X:[0, 1] -> RR$ como
   $
     X(t) := sum_(n) ip(x, e_n)r_n(t).
