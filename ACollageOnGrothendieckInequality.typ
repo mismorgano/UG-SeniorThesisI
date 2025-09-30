@@ -24,6 +24,7 @@
 #show "tq": [tal que]
 #show "tsq": [tales que]
 #show "Hs": [espacio de Hilbert]
+#show "Hss": [espacios de Hilbert]
 #show "Bs": [espacio de Banach]
 #show "rv": [variable aleatoria]
 #show "rvs": [variables aleatorias]
@@ -48,65 +49,68 @@ Version de @Tomczak-Jaegermann1989
     A_p (sum_i abs(a_i)^2)^(1/2) <= (integral_0^1 abs(sum_i r_i (t) a_j)^p d t)^(1/p) <= B_p (sum_i abs(a_i)^2)^(1/2).
   $
   Más aún, $B_p <= p^(1/2)$
-]
+]<Khintchine_inequality>
 #proof[
   Mostraremos primero el resultado para enteros. Sea $p in NN$ y $y in RR$, notemos que $abs(y)^p < p! (1 + abs(y)^p slash p!) <= p! e^abs(y)$.
-  Por lo cual, definiendo $f(t) = sum_(n <= m) a_n r_(n)(t)$, entonces se cumple que 
+  Por lo cual, definiendo $f(t) = sum_(n <= m) a_n r_(n)(t)$, entonces se cumple que
   $
     norm(f)_p^p = integral_0^1 abs(f(t))^p dt <= p! integral_0^1 e^abs(f(t)) dt <= p! integral_0^1 (e^f(t) + e^(-f(t)) ) dt.
   $
-  Podemos normalizar $f$ de tal forma que $norm(f)_2 = (sum_(n<=m) a_n^2)^(1/2) = 1$,
-  luego, notemos que 
+  Podemos normalizar $f$ de tal forma que $norm(f)_2 = (sum_(n<=m) a_n^2)^(1/2) = 1$, luego, notemos que
   $
     integral_0^1 e^(f(t)) dt = integral_0^1 exp(sum_(n <= m) a_n r_(n)(t)) dt = integral_0^1 product_(n<=m) exp(a_n r_(n)(t)) dt,
   $
-  como las $r_n$ son rvs independientes se cumple que 
+  como las $r_n$ son rvs independientes se cumple que
   $
     integral_0^1 e^(f(t)) dt &= product_(n<=m) integral_0^1 exp(a_n r_(n)(t)) dt = product_(n<=m) integral_0^1 1/2 e^(a_n) + 1/2 e^(-a_n) dt \
                              &= product_(n<=m) cosh(a_n),
   $
-  comparando con su serie de potencia obtenemos que 
+  comparando con su serie de potencia obtenemos que
   $
-     product_(n<=m) cosh(a_n) <= product_(n<=m) exp(a_n^2 / 2) = exp(sum_(n<=m) a_n^2/2) = exp(1/2 sum_(n<=m) a_n^2) = e^(1slash 2).
+    product_(n<=m) cosh(a_n) <= product_(n<=m) exp(a_n^2 / 2) = exp(sum_(n<=m) a_n^2/2) = exp(1/2 sum_(n<=m) a_n^2) = e^(1slash 2).
   $
-  Por simetría, también tenemos que $integral_0^1 e^(-f(t)) dt <= e^(1 slash 2)$, y por tanto 
+  Por simetría, también tenemos que $integral_0^1 e^(-f(t)) dt <= e^(1 slash 2)$, y por tanto
   $
     norm(f)_p^p <= 2p! e^(1 slash 2).
   $
-  Para $2<= p < infinity$, por la monotonía de las normas $L_p$ se puede concluir, para $a_1, dots, a_m in RR$ arbitrarios, que
+  Para $2<= p < infinity$, por la monotonía de las normas $L_p$ se puede concluir, para $a_1, dots, a_m in RR$ arbitrarios,
+  que
   $
     (sum_(n<=m) a_n^2)^(1/2) = norm(sum_(n<=m) a_n r_n)_2 <= norm(sum_(n<=m) a_n r_n)_p,
   $
-  luego por la homogeneidad de las normas, tenemos que 
+  luego por la homogeneidad de las normas, tenemos que
   $
     1/((sum_(n<=m) a_n^2)^(1/2)) norm(sum_(n<=m) a_n r_n)_p <= 1/((sum_(n<=m) a_n^2)^(1/2)) norm(sum_(n<=m) a_n r_n)_(ceil(p)) <= (2ceil(p)! e^(1 slash 2))^(1/ceil(p)),
   $
-  por lo cual concluimos que 
+  por lo cual concluimos que
   $
     (sum_(n<=m) a_n^2)^(1/2) <= norm(sum_(n<=m) a_n r_n)_p <= (2ceil(p)! e^(1 slash 2))^(1/ceil(p)) (sum_(n<=m) a_n^2)^(1/2),
   $
   como queremos.
 
-  Ahora, para el caso $ 0 < p < 2$. Sea $theta = (2-(p/2))^(-1)$, podemos notar que $0 < theta < 1$, asi $1/theta > 1$ y su conjugado es $1/(1-theta)$, ademas $p theta + 4(1-theta) = 2$, por lo cual aplicando la desigualdad de Hölder se cumple que 
+  Ahora, para el caso $ 0 < p < 2$. Sea $theta = (2-(p/2))^(-1)$, podemos notar que $0 < theta < 1$, asi $1/theta > 1$ y
+  su conjugado es $1/(1-theta)$, ademas $p theta + 4(1-theta) = 2$, por lo cual aplicando la desigualdad de Hölder se
+  cumple que
   $
     integral_0^1 abs(f(t))^2 dt = integral_0^1 abs(f(t))^(p theta) abs(f(t))^(4 (1 - theta)) dt &<= (integral_0^1 (abs(f(t))^(p theta))^(1/theta) dt)^theta (integral_0^1 abs(f(t))^(4 (1 - theta))^(1/(1-theta)) dt)^(1-theta) \
-                            &= (integral_0^1 (abs(f(t))^p dt)^theta (integral_0^1 abs(f(t))^4 dt)^(1-theta),
+                                                                                                &= (integral_0^1 (abs(f(t))^p dt)^theta (integral_0^1 abs(f(t))^4 dt)^(1-theta),
   $
-  lo cual se puede reescribir como $norm(f)_2^2 <= norm(f)_p^(p theta) norm(f)_4^(4(1-theta))$.
-  Por lo probado anteriormente tenemos que $norm(f)_4 <= B_4 norm(f)_2$, por lo cual 
+  lo cual se puede reescribir como $norm(f)_2^2 <= norm(f)_p^(p theta) norm(f)_4^(4(1-theta))$. Por lo probado
+  anteriormente tenemos que $norm(f)_4 <= B_4 norm(f)_2$, por lo cual
   $
     norm(f)_2^2 <= norm(f)_p^(p theta) norm(f)_4^(4(1-theta)) <= norm(f)_p^(p theta) B_4^(4(1-theta)) norm(f)_2^(4(1-theta)),
   $
-  y en consecuencia 
+  y en consecuencia
   $
     B_4^(-4(1-theta)) norm(f)_2^(2-4(1-theta)) = B_4^(p theta -2 )norm(f)_2^(p theta)<= norm(f)_p^(p theta),
   $
-  obteniendo que 
+  obteniendo que
   $
     B_4^(1 - 2slash p theta) norm(f)_2 <= norm(f)_p,
   $
-  como $1 - 2slash p theta = 2 - 4slash p$, vemos que $B_4^(2 - 4slash p) norm(f)_2 <= norm(f)_p$. Luego, por la monotonía obtenemos que $B_4^(2 - 4slash p) norm(f)_2 <= norm(f)_p <= norm(f)_2$.
-]
+  como $1 - 2slash p theta = 2 - 4slash p$, vemos que $B_4^(2 - 4slash p) norm(f)_2 <= norm(f)_p$. Luego, por la monotonía
+  obtenemos que $B_4^(2 - 4slash p) norm(f)_2 <= norm(f)_p <= norm(f)_2$.
+]<Khintchine_inequality_proof>
 
 Version que se encuentra en @Garling_2007
 #theorem[Desigualdad de Khintchine][
@@ -143,6 +147,108 @@ Segunda version, encontrada en @jarchow1995absolutely
   $
     abs(sum_(i, j) a_(i j) ip(x_i, y_i)) <= K_G max{ abs(sum_(i, j) a_(i, j) s_i t_j): abs(s_i) <=1, abs(t_j) <=1}.
   $
+]
+#proof[ 
+  #let triple(x) = $bar.v.triple #x bar.v.triple$
+  #let L = $L_2[0, 1]$
+  #let sign = "sign"
+  #let xl = $X^(L)$
+  #let xu = $X^(U)$
+  #let yl = $Y^(L)$
+  #let yu = $Y^(U)$
+  #let xi = $X_i$
+  #let yj = $Y_j$
+  Supondremos que las matrices son reales al igual que los Hs. Por simplicidad, definamos:
+  $
+    norm(a) := sup{ abs(sum_(i, j) a_(i, j) s_i t_j): abs(s_i) <=1, abs(t_j) <=1}
+  $
+  y
+  $
+    triple(a) := sup abs(sum_(i, j) a_(i j) ip(x_i, y_i)),
+  $
+  donde este ultimo supremo se toma sobre todos los Hss $H$ y todos los vectores $x_1, dots, x_n$, $y_1, dots, y_n$ en la
+  bola unitaria $B_H$ del Hs $H$. Dado que para cada $n$ solo consideremos un conjunto finito de vectores entonces solo es
+  necesario considerar Hss separables.
+
+  Al igual que con la @Khintchine_inequality_proof de la desigualdad de Khintchine la idea es es poder embeber cualquier
+  Hs separable en $L_2[0, 1]$ que respete su producto interno. Para ello, de igual manera, utilizaremos las funciones de
+  Rademacher ${r_n}_n$ las cuales formal un conjunto ortonormal en $L$. La forma en que lo haremos sera la siguiente: dado $x in H$,
+  como $H$ tiene base ortonormal ${e_n}_n$ sabemos que $x = sum_n ip(x, e_n) e_n$ y ademas $infinity > norm(x) = sum_(n) ip(x, e_n)$,
+  asi podemos definir $X:[0, 1] -> RR$ como
+  $
+    X(t) := sum_(n) ip(x, e_n)r_n(t).
+  $
+  Luego, por la ortonormalidad de las funciones de Rademacher tenemos que
+  $
+    norm(X)_2 ^2 = integral_0^1 X(t)^2 dt = integral_0^1 abs(sum_(n) ip(x, e_n)r_n(t))^2 dt = integral_0^1 sum_(n) ip(x, e_n)^2 dt = norm(x)^2,
+  $
+  por lo cual $norm(X)_2 = norm(x)$ y ademas, si $y in H$ al igual que con $x$ podemos definir $Y:[0, 1] -> infinity$ y
+  tenemos que
+  $
+    ip(x, y) &= 1/4 (norm(x+y)^2 - norm(x-y)^2) \
+             &= 1/4 (integral_0^1 (X(t) - Y(t))^2 dt - integral_0^1 (X(t) - Y(t))^2 dt ) \
+             &= integral_0^1 X(t)Y(t) dt,
+  $
+  por lo cual se preserva el producto interno. La idea ahora es acotar $X$ de cierta manera. Para ellos, tomemos $M > 0$ y
+  definamos $X^L:[0, 1]->RR$ dada por
+  $
+    xl(t) := cases(X(t) & "si" abs(X(t)) <= M, M sign X(t) & "si" abs(X(t))>M)
+  $
+  y también definamos $xu:[0, 1] -> RR$ dada por $xu := X(t) - xl$. De lo anterior podemos notar que $xl$ esta acotada por $M$ y
+  que
+  $
+    xu(t) = cases(0 &"si" abs(X(t))<=M, X(t) - M sign X(t) & "si" abs(X(t))> M)
+  $
+  por lo cual
+  $
+    abs(xu(t)) = cases(0 & "si" abs(X(t))<=M, abs(X(t)) - M & "si" abs(X(t))> M),
+  $
+  mas aun, usando la siguiente desigualdad $s<= m + (s^2)/4m$, con $s, m > 0$, tenemos que
+  $
+    abs(X(t)) <= M + (abs(X(t))^2)/(4M) ==> abs(xu(t)) <= abs(X(t))^2/(4M).
+  $
+  Por lo cual, si suponemos que $x in B_H$ y usando la @Khintchine_inequality obtenemos que
+  $
+    norm(xu)_2^2 = integral_0^1 abs(xu(t)) ^2 dt <= 1/(16M^2) integral_0^1 abs(X(t))^4 dt <= B_4^4/(16M^2) norm(x)_2^2 <= 3/(16M^2),
+  $
+  donde la ultimo desigualdad se da pues $B_4 <= 3^(1/4)$. Lo anterior implica que para $x in B_H$ se cumple que $norm(xu)_2 <= sqrt(3)/(4M)$.
+  Por ultimo, primero notemos que $X = xu + xl$, por lo cual $X Y = (xu + xl)(yu + yl) = (xu + xl)(yl) + (X)(yu) = xl yl + (xu yl + x yu)$.
+  Luego, si $x_1, dots, x_n$ y $y_1, dots, y_n in B_H$, usando lo anterior y la desigualdad del trianguló se cumple que
+  $
+    abs(sum_(i, j) a_(i j) ip(x_i, y_i)) &= abs(integral_0^1 sum_(i, j) a_(i, j) xi(t) yj(t) dt) \
+                                         &= abs(integral_0^1 sum_(i, j) a_(i, j) (xl_i (t) yl_j (t) + (xu_i (t) yl_j (t) + X(t)yu_j (t))) dt) \
+                                         & <= abs(integral_0^1 sum_(i, j) a_(i, j) xl_i (t) yl_j (t) dt) + abs(integral_0^1 sum_(i, j) a_(i, j) (xu_i (t) yl_j (t) + X(t)yu_j (t)) dt).
+  $
+  Por un lado tenemos que
+  $
+    abs(integral_0^1 sum_(i, j) a_(i, j) xl_i (t) yl_j (t) dt) <= M^2 abs(integral_0^1 sum_(i, j) a_(i, j) dt) <= M^2 norm(a),
+  $
+  por otro lado
+  $
+    abs(integral_0^1 sum_(i, j) a_(i, j) (xu_i (t) yl_j (t) + X(t)yu_j (t)) dt) = \
+    abs(
+      integral_0^1 sum_(i, j) a_(i, j) norm(xu_i (t))(xu_i (t) yl_j (t))/(norm(xu_i (t))) + (X(t)yu_j (t))/norm(yl_j (t)) norm(yl_j (t)) dt
+    ) \
+    <= abs(integral_0^1 sum_(i, j) a_(i, j) norm(xu_i (t))(xu_i (t) yl_j (t))/(norm(xu_i (t))) dt) + abs(integral_0^1 sum_(i, j) a_(i, j) (X(t)yu_j (t))/norm(yl_j (t)) norm(yl_j (t)) dt),
+  $
+  de donde se puede ver que
+  $
+    abs(integral_0^1 sum_(i, j) a_(i, j) norm(xu_i (t))(xu_i (t) yl_j (t))/(norm(xu_i (t))) dt) <= sqrt(3)/(4M) abs(integral_0^1 sum_(i, j) a_(i, j) (xu_i (t) yl_j (t))/(norm(xu_i (t))) dt)
+  $
+  (lo cual debería implicar $<= sqrt(3)/(4M) triple(a)$) y que
+  $
+    abs(integral_0^1 sum_(i, j) a_(i, j) (X(t)yu_j (t))/norm(yl_j (t)) norm(yl_j (t)) dt) &<= sqrt(3)/(4M) abs(integral_0^1 sum_(i, j) a_(i, j) (X(t)yu_j (t))/norm(yl_j (t)) dt) \
+                                                                                          &<= sqrt(3)/(4M) triple(a).
+  $
+  De lo anterior obtenemos que
+  $
+    abs(sum_(i, j) a_(i j) ip(x_i, y_i)) <= M^2 norm(a) + sqrt(3)/(2M) triple(a),
+  $
+  entonces, si $M>sqrt(3)/2$, lo anterior implica que
+  $
+    triple(a) <= (2M^3)/(2M - sqrt(3)) norm(a),
+  $
+  como queremos.
 ]
 
 Una tercera version, se encuentra en @Lindenstrauss1996
