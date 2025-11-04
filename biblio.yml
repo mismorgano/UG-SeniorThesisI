@@ -74,3 +74,36 @@ ResumeMR94682:
     type: periodical
     title: Bol. Soc. Mat. São Paulo
     volume: 8
+
+ResumeRevisitedMR2428264:
+  type: book
+  title: The metric theory of tensor products
+  author:
+  - Diestel, Joe
+  - Fourie, Jan H.
+  - Swart, Johan
+  date: 2008
+  publisher: American Mathematical Society, Providence, RI
+  page-range: x+278
+  url: https://doi.org/10.1090/mbk/052
+  serial-number:
+    doi: 10.1090/mbk/052
+    isbn: 978-0-8218-4440-3
+  note: Grothendieck's résumé{} revisited
+
+
+DefantFloretMR1209438:
+  type: book
+  title: Tensor norms and operator ideals
+  author:
+  - Defant, Andreas
+  - Floret, Klaus
+  date: 1993
+  publisher: North-Holland Publishing Co., Amsterdam
+  volume: 176
+  page-range: xii+566
+  serial-number:
+    isbn: 0-444-89091-2
+  parent:
+    type: book
+    title: North-Holland Mathematics Studies
