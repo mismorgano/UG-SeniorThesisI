@@ -18,6 +18,7 @@
 // envs
 #let definition = thmbox("definition", "Definición", inset: 0em)
 #let theorem = thmbox("theorem", "Teorema", inset: 0em)
+#let proposition = thmbox("proposition", "Proposición", inset: 0em)
 #let proof = thmproof("proof", "Demostración", inset: 0em)
 
 // functions
@@ -33,6 +34,8 @@
 // macros
 #show "tq": [tal que]
 #show "tsq": [tales que]
+#show "Ns": [espacio normado]
+#show "Nss": [espacio normado]
 #show "Hs": [espacio de Hilbert]
 #show "Hss": [espacios de Hilbert]
 #show "Bs": [espacio de Banach]
@@ -47,6 +50,41 @@
   #text(size: 18pt)[
     Un Collage de la desigualdad de Grothendieck
   ]
+]
+
+= Formas Bilineales y Lineales
+
+#proposition[
+  Si $X, Y$ son Nss de dimensión finita. Entonces existe un isomorfismo lineal entre los siguientes espacios $B(X, Y)$ y
+  $L(X, Y')$
+]
+#proof[
+  Sea $Phi: B(X, Y) -> L(X, Y')$ dada por
+  $
+    Phi: B(X, Y) & -> L(X, Y') \
+     b(dot, dot) & -> T_b: X -> Y' \
+                 &                 & x -> b(x, dot)
+  $
+  Veamos que $Phi$ es lineal, inyectiva y sobreyectiva. Notemos que $Phi(lambda b + d) = T_(lambda b + d)$, donde para
+  todo $x in X$ se tiene que
+  $
+    T_(lambda b + d)(x) = lambda b(x, dot) + d(x, dot) = lambda T_b(x) + T_d(x),
+  $
+  por lo cual $Phi(lambda b + d) = lambda T_b + T_d$. Notemos que es inyectiva pues
+  $
+    ker Phi & = {b in B(X, Y): Phi(b) = 0} \
+            & = {b in B(X, Y): b(x, dot) = 0, "para todo" x in
+  $X$} \
+  = {b in B(X, Y): b(x, y) = 0, "para todo" x in$X$, "para todo" y in Y} \
+  = {b in B(X, Y): b = 0} = {0},$
+  por lo cual $Phi$ es inyectiva. Ahora, si $T in L(X, Y')$, consideremos $b: X times Y -> KK$ dada por
+  $b(x, y) = T(x)(y)$, notemos que si fijamos $x in X$ se tiene que $b(x, dot)$ es lineal pues $T(x)$ lo es, dado que
+  $T in L(X, Y')$, es decir su imagen es un funcional lineal. Ahora si fijamos $y in Y$ notemos que $b(dot, y)$ también
+  es lineal pues $T$ es lineal. Por ultimo notemos que, para todo $x in X$,
+  $
+    Phi(b)(x) = b(x, dot) = T(x)(dot),
+  $
+  por lo cual $Phi(b) = T$. Por todo lo anterior tenemos que $Phi$ es un isomorfismo lineal.
 ]
 
 = La Desigualdad de Khintchine
