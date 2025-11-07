@@ -73,10 +73,10 @@
   por lo cual $Phi(lambda b + d) = lambda T_b + T_d$. Notemos que es inyectiva pues
   $
     ker Phi & = {b in B(X, Y): Phi(b) = 0} \
-            & = {b in B(X, Y): b(x, dot) = 0, "para todo" x in
-  $X$} \
-  = {b in B(X, Y): b(x, y) = 0, "para todo" x in$X$, "para todo" y in Y} \
-  = {b in B(X, Y): b = 0} = {0},$
+            & = {b in B(X, Y): b(x, dot) = 0, "para todo" x in X} \
+            & = {b in B(X, Y): b(x, y) = 0, "para todo" x in X, "para todo" y in Y} \
+            & = {b in B(X, Y): b = 0} = {0},
+  $
   por lo cual $Phi$ es inyectiva. Ahora, si $T in L(X, Y')$, consideremos $b: X times Y -> KK$ dada por
   $b(x, y) = T(x)(y)$, notemos que si fijamos $x in X$ se tiene que $b(x, dot)$ es lineal pues $T(x)$ lo es, dado que
   $T in L(X, Y')$, es decir su imagen es un funcional lineal. Ahora si fijamos $y in Y$ notemos que $b(dot, y)$ también
