@@ -22,7 +22,7 @@
 #let proof = thmproof("proof", "Demostración", inset: 0em)
 
 // functions
-#let ip(x, y) = $angle.l #x, #y angle.r$
+#let ip(x, y) = $chevron.l #x, #y chevron.r$
 
 // variables
 #let l = $cal(l)$
@@ -30,10 +30,13 @@
 #let dt = $d t$
 #let sign = "sign"
 #let L = $L_2[0, 1]$
-
+#let du(X) = $#X'$
+#let iso = $tilde.equiv$
 // macros
 #show "tq": [tal que]
 #show "tsq": [tales que]
+#show "Vs": [espacio vectorial]
+#show "Vss": [espacios vectoriales]
 #show "Ns": [espacio normado]
 #show "Nss": [espacio normado]
 #show "Hs": [espacio de Hilbert]
@@ -55,7 +58,7 @@
 = Formas Bilineales y Lineales
 
 #proposition[
-  Si $X, Y$ son Nss de dimensión finita. Entonces existe un isomorfismo lineal entre los siguientes espacios $B(X, Y)$ y
+  Si $X, Y$ son Vss. Entonces existe un isomorfismo lineal entre los siguientes espacios $B(X, Y)$ y
   $L(X, Y')$
 ]
 #proof[
@@ -86,6 +89,29 @@
   $
   por lo cual $Phi(b) = T$. Por todo lo anterior tenemos que $Phi$ es un isomorfismo lineal.
 ]
+
+Más aún, tenemos que si $X, Y, Z$ son Vss se tiene que $B(X, Y; Z) iso L(X, L(Y, Z))$.
+
+Por otro lado si $X, Y$ son Vss de dimensión finita, podemos fijar bases en cada uno y ver como actúa $Phi$ en alguna
+$b in B(X, Y)$. Sean $e_1, dots, e_n$ y $f_1, dots, f_m$ bases de $X$ y $Y$, respectivamente, y sea $b in B(X, Y)$, como
+$Phi(b) = T_b in L(X, du(Y))$ existe una matriz única que representa $T_b$ en las bases $e_1, dots, e_n$ y
+$du(f_1), dots, du(f_m)$
+
+
+Ahora bien, si $X, Y$ son Nss, como vimos $B(X, Y)$ es un Vs al igual que $L(X, du(Y))$ y por tanto podemos normar estos espacios
+si $b in B(X, Y)$
+$
+  norm(b) = sup { abs(b(x, y)): norm((x, y)) <= 1}
+$
+y si $T in L(X, du(Y))$ entonces
+$
+  norm(T) = sup{norm(T(x)): norm(x)<=1} = sup{sup{abs(T(x)(y)): norm(y) <=1}: norm(x)<=1}
+$
+luego 
+$
+  norm(Phi(b)) &= sup{norm(T_(b)(x)): norm(x)<=1} = sup{sup{abs(T_(b)(x)(y)): norm(y) <=1}: norm(x)<=1} \
+               &= 
+$
 
 = La Desigualdad de Khintchine
 
