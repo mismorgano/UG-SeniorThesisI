@@ -107,3 +107,20 @@ DefantFloretMR1209438:
   parent:
     type: book
     title: North-Holland Mathematics Studies
+    
+LindenstraussPelczynskiMR231188:
+  type: article
+  title: Absolutely summing operators in $cal(L)_P$-spaces and their applications
+  author:
+  - Lindenstrauss, J.
+  - Pełczyński, A.
+  date: 1968
+  page-range: 275-326
+  url: https://doi.org/10.4064/sm-29-3-275-326
+  serial-number:
+    doi: 10.4064/sm-29-3-275-326
+    issn: 0039-3223,1730-6337
+  parent:
+    type: periodical
+    title: Studia Math.
+    volume: 29
