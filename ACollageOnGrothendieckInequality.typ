@@ -32,6 +32,8 @@
 #let L = $L_2[0, 1]$
 #let du(X) = $#X'$
 #let iso = $tilde.equiv$
+#let M = $op(cal(M), limits: #true)$
+
 // macros
 #show "tq": [tal que]
 #show "tsq": [tales que]
@@ -97,6 +99,18 @@ $b in B(X, Y)$. Sean $e_1, dots, e_n$ y $f_1, dots, f_m$ bases de $X$ y $Y$, res
 $Phi(b) = T_b in L(X, du(Y))$ existe una matriz única que representa $T_b$ en las bases $e_1, dots, e_n$ y
 $du(f_1), dots, du(f_m)$
 
+Ahora bien si $b in B(X, Y)$ tenemos que
+$
+  b(sum_(i=1)^n x_i e_i, sum_(j=1)^m y_j f_j) &= sum_(i=1)^n x_i b(e_i, sum_(j=1)^m y_j f_j) = sum_(i=1)^n x_i ( sum_(j=1)^m y_j b(e_i, f_j)) \
+  &= sum_(i=1)^n sum_(j=1)^m x_i y_j b(e_i, f_j) = sum_(j=1)^m sum_(i=1)^n x_i y_j b(e_i, f_j) \
+  &= sum_(j=1)^m y_j (sum_(i=1)^n x_i b(e_i, f_j)),
+$
+de lo anterior podemos notar que $b$ solo depende de $b(e_i, f_j)$, es decir, solo depende de los valores en la base.
+Por otro lado si $A=[b(e_i, e_j)] in #M _(n times m)$, podemos notar entonces que
+$b(sum_(i=1)^n x_i e_i, sum_(j=1)^m y_j f_j) = y^t A^t x$, donde $x = vec(x_1, dots.v, x_n)$ y $y = vec(y_1, dots.v, y_m)$
+dados por los isomorfismos $i_X: X -> KK^n$, $i_Y: Y -> KK^m$, inducidos por sus bases.
+
+Ademas, si $A = [b(e_i, f_j)] in #M _(n times m)$, es claro que $A^t (dot) in L(X, Y)$.
 
 Ahora bien, si $X, Y$ son Nss, como vimos $B(X, Y)$ es un Vs al igual que $L(X, du(Y))$ y por tanto podemos normar estos espacios
 si $b in B(X, Y)$
