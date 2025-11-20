@@ -324,9 +324,25 @@ Segunda version, encontrada en @jarchow1995absolutely
   Existe una constante universal $K_G$ para la cual, dado cualquier Hs $H$, cualquier $n in NN$, y cualquier matriz
   escalar $(a_(i j))$ y cualesquiera vectores en $x_1, dots, x_n, y_1, dots, y_n in B_H$, tenemos que
   $
-    abs(sum_(i, j) a_(i j) ip(x_i, y_i)) <= K_G max{ abs(sum_(i, j) a_(i, j) s_i t_j): abs(s_i) <=1, abs(t_j) <=1}.
+    abs(sum_(i, j) a_(i j) ip(x_i, y_j)) <= K_G max{ abs(sum_(i, j) a_(i, j) s_i t_j): abs(s_i) <=1, abs(t_j) <=1}.
   $
 ]<Grothendieck_inequality>
+
+Antes de seguir con la Demostración, notemos lo siguiente. Dado cualquier Hs $H$ y cualesquiera $s_i$, $t_j$ tsq
+$abs(s_i) <= 1$, $abs(t_j) <= 1$, podemos escoger $h in H$ tq $norm(h) = ip(h, h) = 1$ y ademas dada la bilinealidad de
+$ip(dot, dot)$ tenemos que $ip(s_i h, t_j h) = s_i t_j ip(h, h) = s_i t_j$ y ademas
+$norm(s_i h) = abs(s_i)norm(h)=abs(s_i) <= 1$ por lo que $s_i in B_H$, de manera similar $t_j in B_H$. De lo anterior
+podemos notar que
+$
+  { abs(sum_(i, j) a_(i, j) s_i t_j): abs(s_i) <=1, abs(t_j) <=1} subset {abs(sum_(i, j) a_(i j) ip(x_i, y_i)): x_i in B_H, y_j in B_H},
+$
+por lo cual se cumple que:
+$
+  sup{ abs(sum_(i, j) a_(i, j) s_i t_j): abs(s_i) <=1, abs(t_j) <=1} <= sup {abs(sum_(i, j) a_(i j) ip(x_i, y_i)): x_i in B_H, y_j in B_H},
+$
+es decir, se cumple la desigualdad contraria.
+
+
 #proof[
   #let triple(x) = $bar.v.triple #x bar.v.triple$
 
