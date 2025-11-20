@@ -59,6 +59,21 @@
   #text(size: 18pt)[
     Un Collage de la desigualdad de Grothendieck
   ]
+
+  #v(1cm)
+
+  #grid(columns: (1fr, 1fr))[
+    Maite Fernández Unzueta. \
+    #link("mailto:maite@cimat.mx")
+  ][
+    Antonio Barragán Romero. \
+    #link("mailto:antonio.barragan@cimat.mx")
+
+  ]
+  #v(3cm)
+  #text(size: 14pt)[
+    *Abstract*:
+  ]
 ]
 
 = Formas Bilineales y Lineales
