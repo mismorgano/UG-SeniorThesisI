@@ -1,10 +1,10 @@
 #import "@preview/ctheorems:1.1.3": thmbox, thmproof, thmrules
-
+#import "@preview/itemize:0.2.0" as el
 
 // config
 #set page(paper: "a4")
 #set text(lang: "es", font: "New Computer Modern", size: 12pt)
-#set heading(numbering: "1)")
+#set heading(numbering: "1.")
 
 #set cite(form: "prose", style: "alphanumeric")
 #show cite: set text(blue)
@@ -14,7 +14,11 @@
   it
 }
 
+#set math.equation(numbering: "(1)", supplement: [Eq])
+
 #show: thmrules
+#show: el.default-enum-list
+#show: el.config.ref
 // envs
 #let definition = thmbox("definition", "Definición", inset: 0em)
 #let theorem = thmbox("theorem", "Teorema", inset: 0em)
@@ -40,7 +44,7 @@
 #show "Vs": [espacio vectorial]
 #show "Vss": [espacios vectoriales]
 #show "Ns": [espacio normado]
-#show "Nss": [espacio normado]
+#show "Nss": [espacio normados]
 #show "Hs": [espacio de Hilbert]
 #show "Hss": [espacios de Hilbert]
 #show "Bs": [espacio de Banach]
@@ -107,24 +111,84 @@ $
 $
 de lo anterior podemos notar que $b$ solo depende de $b(e_i, f_j)$, es decir, solo depende de los valores en la base.
 Por otro lado si $A=[b(e_i, e_j)] in #M _(n times m)$, podemos notar entonces que
-$b(sum_(i=1)^n x_i e_i, sum_(j=1)^m y_j f_j) = y^t A^t x$, donde $x = vec(x_1, dots.v, x_n)$ y $y = vec(y_1, dots.v, y_m)$
-dados por los isomorfismos $i_X: X -> KK^n$, $i_Y: Y -> KK^m$, inducidos por sus bases.
+$b(sum_(i=1)^n x_i e_i, sum_(j=1)^m y_j f_j) = y^t A^t x$, donde $x = vec(x_1, dots.v, x_n)$ y
+$y = vec(y_1, dots.v, y_m)$ dados por los isomorfismos $i_X: X -> KK^n$, $i_Y: Y -> KK^m$, inducidos por sus bases.
 
-Ademas, si $A = [b(e_i, f_j)] in #M _(n times m)$, es claro que $A^t (dot) in L(X, Y)$.
+Ademas, si $A = [b(e_i, f_j)] in #M _(n times m)$, es claro que $A^t (dot) = A^t circle.tiny i_X in L(X, Y)$, dadas unas
+bases de $X$ y $Y$.
 
-Ahora bien, si $X, Y$ son Nss, como vimos $B(X, Y)$ es un Vs al igual que $L(X, du(Y))$ y por tanto podemos normar estos espacios
-si $b in B(X, Y)$
+== Continuidad de formas Bilineales
+
+Dada una $b in B(X, Y)$, podemos normar a $X times Y$ y como $KK$ es normado, podemos preguntarnos cunado se cumple que
+$b$ es continua. Para ello tenemos que podemos hacer $X times Y$ un Vs,
+$(x_1, x_2) + (y_1, y_2) = (x_1 + y_1, x_2 * y_2)$ y $lambda(x, y) = (lambda x, lambda y)$. Entonces al igual que con
+$X$ o con $Y$, queremos dotar a $X times Y$ con una norma tq $X times Y$ sea un espacio vectorial topológico y dicha
+norma sea continua respecto a la topología de $X times Y$. Como $X$, $Y$ son normados tienen una topología entonces
+podemos considerar la topologia producto en $X times Y$.#footnote[¿Que normas coinciden con la topología producto?] Para
+ello notemos que:
 $
-  norm(b) = sup { abs(b(x, y)): norm((x, y)) <= 1}
+  b(x, y) - b(x_0, y_0) & = b(x - x_0, y - y_0) + b(x - x_0, y_0) + b(x_0, y -y_0).
+$<bilinear_continuous_identity>
+
+#proposition[
+  Si $b in B(X, Y)$ la siguientes afirmaciones son equivalentes:
+  + $b$ es continua.<bilinear_continuous>
+  + $b$ es continua en $(0, 0)$.<bilinear_continuous_at_zero>
+  + $b$ es _acotada_, es decir, existe $C > 0$ tq $abs(b(x, y)) < C norm(x) norm(y)$.<bilinear_bounded>
+]<continuity_of_bilinear_forms>
+Notemos que si $b$ es continua en $(0, 0)$ entonces tenemos que dado $epsilon >0$ existe $delta > 0$ tq si
+$norm((x, y) - (0, 0)) = norm((x, y)) <= delta$ entonces $abs(b(x, y) - b(0, 0))= abs(b(x, y)) < epsilon$. Asi, dado
+$(x, y) in X times Y$ tenemos que $norm(delta ((x, y)) / norm((x, y))) = delta$ y por tanto
+$abs(b(delta ((x, y)) / norm((x, y)))) = abs(b(delta x / norm((x, y)), delta y / norm((x, y)))) = delta^2 / norm((x, y))^2 abs(b(x, y)) < epsilon$,
+lo cual implica que $abs(b(x, y)) < epsilon/delta^2 norm((x, y))^2$
+
+#proof[
+  #let xn = $accent(x_n, tilde)$
+  #let yn = $accent(y_n, tilde)$
+  @bilinear_continuous $=>$ @bilinear_continuous_at_zero Es claro por definición.
+
+  @bilinear_continuous $arrow.l.double$ @bilinear_continuous_at_zero Se sigue pues $X times Y$ es lineal.
+
+  @bilinear_continuous_at_zero $=>$ @bilinear_bounded Procedamos por contrapositiva. Entonces existe una sucesión
+  $(x_n, y_n)$ tq $abs(b(x_n, y_n)) > n^2 norm(x_n) norm(y_n)$. Si consideramos $accent(x_n, tilde) = 1/n x_n/norm(x_n)$
+  y $accent(y_n, tilde) = 1/n y_n /norm(y_n)$, podemos notar que $accent(x_n, tilde) -> 0$ y que
+  $accent(y_n, tilde) -> 0$ por lo cual $(accent(x_n, tilde), accent(y_n, tilde)) -> (0, 0)$ en la topología producto y
+  por tanto en norma. Sin embargo notemos que
+  $
+    abs(b(xn, yn)) = abs(1/n^2 1/(norm(x_n) norm(y_n)) b(x_n, y_n)) = 1/n^2 1/(norm(x_n) norm(y_n)) abs(b(x_n, y_n)) > 1,
+  $
+  por lo cual $b$ no es continua en $(0, 0)$.
+
+  @bilinear_bounded $=>$ @bilinear_continuous Si $(x_n, y_n)$ es tq $(x_n, y_n) -> (x, y)$ cuando $n-> infinity$
+  entonces tenemos que existe básico tq contiene la cola de $(x_n - x, y_n - y)$, por lo cual podemos escoger básicos de
+  $x_n - x$ y $y_n - y$ $0$ del mismo radio tsq contienen la cola de $(x_n - x)$ y $(y_n - y)$, respectivamente, es
+  decir se tiene que $x_n -> x$ y $y_n -> y$. De @bilinear_continuous_identity podemos notar que:
+  $
+    abs(b(x_n, y_n) - b(x, y)) & = abs(b(x_n - x, y_n - y) + b(x_n - x, y) + b(x, y_n -y)) \
+                               & <= abs(b(x_n - x, y_n - y)) + abs(b(x_n - x, y)) + abs(b(x, y_n -y)) \
+                               & <=C norm(x_n- x) norm(y_n - y) + C norm(x_n - x)norm(y) + C norm(x)norm(y_n - y),
+  $
+  y por tanto $b(x_n, y_n) -> b(x, y).$
+
+]
+
+Ahora bien, si $X, Y$ son Nss, como vimos $B(X, Y)$ es un Vs al igual que $L(X, du(Y))$ y por tanto podemos normar estos
+espacios si $b in B(X, Y)$
+$
+  norm(b) = sup { abs(b(x, y)): norm((x, y)) <= 1} = sup{abs(y^t A^t x): norm((x, y)) <= 1},
 $
 y si $T in L(X, du(Y))$ entonces
 $
-  norm(T) = sup{norm(T(x)): norm(x)<=1} = sup{sup{abs(T(x)(y)): norm(y) <=1}: norm(x)<=1}
+  norm(T) = sup{norm(T(x)): norm(x)<=1} = sup{sup{abs(T(x)(y)): norm(y) <=1}: norm(x)<=1},
 $
-luego 
+más aún, por @continuity_of_bilinear_forms podemos dotar a $B(X, Y)$ con la norma
 $
-  norm(Phi(b)) &= sup{norm(T_(b)(x)): norm(x)<=1} = sup{sup{abs(T_(b)(x)(y)): norm(y) <=1}: norm(x)<=1} \
-               &= 
+  norm(b) = inf{ C> 0: abs(b(x, y)) < C, "para" x in B_X, y in B_Y}.
+$
+luego
+$
+  norm(Phi(b)) & = sup{norm(T_(b)(x)): norm(x)<=1} = sup{sup{abs(T_(b)(x)(y)): norm(y) <=1}: norm(x)<=1} \
+               & =
 $
 
 = La Desigualdad de Khintchine
@@ -133,7 +197,7 @@ Primero veamos un resultado muy importante que nos permitirá después llegar a 
 @Grothendieck_inequality. El siguiente resultado se base en las propiedades de la siguiente clase de funciones: las
 *funciones de Rademacher*. Para cada $n in NN$ definimos $r_n:[0, 1]->RR$ definidas por
 $
-  r_n(t) = sign(sin(2^n pi t)),
+  r_n (t) = sign(sin(2^n pi t)),
 $
 y la que es su propiedad mas importante, en lo que a nosotros respecta, que la sucesion ${r_n}_n$ forma un conjunto
 ortonormal en en #L, y más aún
