@@ -124,3 +124,15 @@ LindenstraussPelczynskiMR231188:
     type: periodical
     title: Studia Math.
     volume: 29
+
+SchattenMR36935:
+  type: book
+  title: A {T}heory of {C}ross-{S}paces
+  author: Schatten, Robert
+  date: 1950
+  publisher: Princeton University Press, Princeton, NJ
+  page-range: vii+153
+  parent:
+    type: book
+    title: Annals of Mathematics Studies
+
