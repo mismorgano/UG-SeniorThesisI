@@ -37,6 +37,7 @@
 #let du(X) = $#X'$
 #let iso = $tilde.equiv$
 #let M = $op(cal(M), limits: #true)$
+#let tensor = $times.o$
 
 // macros
 #show "tq": [tal que]
@@ -75,6 +76,19 @@
     *Abstract*:
   ]
 ]
+
+= Introducción
+
+En su trabajo "Résumé de la théorie métrique des produits tensoriels topologiques" @ResumeMR94682, Grothendieck hace un
+desarrollo de normas tensoriales, normas-$tensor$, previo al enunciado y demostración de lo que él llamo "théorème
+fondamental de la théorie métrique des produits tensoriels".
+
+Incluso el mismo menciona que se podia haber prescindido de tal desarrollo para formular y demostrar los resultado
+importantes de su "Résumé", más sin embargo es a través de tales desarrollos preliminares que se puede no solo formular
+de una manera concisa y sugerente sino también captar las relaciones entre las distintas variantes del "théorème
+fondamental" y tener una verdadera comprensión de la teoría.
+
+Es por ello que nosotros también daremos una pequeña introducción  a tales preliminares.
 
 = Formas Bilineales y Lineales
 
