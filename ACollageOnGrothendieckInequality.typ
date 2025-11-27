@@ -88,9 +88,33 @@ importantes de su "Résumé", más sin embargo es a través de tales desarrollos
 de una manera concisa y sugerente sino también captar las relaciones entre las distintas variantes del "théorème
 fondamental" y tener una verdadera comprensión de la teoría.
 
-Es por ello que nosotros también daremos una pequeña introducción  a tales preliminares.
+Es por ello que nosotros también daremos una pequeña introducción a tales preliminares.
 
-= Formas Bilineales y Lineales
+= Preliminares
+
+== Formas Bilineales y Lineales
+
+#definition([Mapeos Bilineales])[
+  Dados $X, Y, Z$ Vss sobre el mismo campo $KK = RR space"o"space CC$, decimos que un mapeo
+  $
+    b:X times Y -> Z,
+  $
+  es bilineal si los mapeos sección
+  // #let mtext = text.with(font: "Libertinus Serif")
+  // $
+  //   attach(bl: x, Phi) : & F & --> & G         & wide #mtext[and] wide Phi_y : & E & --> & G \
+  //                        & y & ~~> & Phi(x, y) &                               & x & ~~> & Phi(x, y)
+  // $
+
+  $
+    seci(b, x): & Y &            --> & Z       & wide "y" wide secd(b, y): & X &            --> & Z \
+                & y & arrow.bar.long & b(x, y) &                           & x & arrow.bar.long & b(x, y)
+  $
+  son lineales para todo $x in X$ y todo $y in Y$,
+]
+
+Denotamos por $B(X, Y: Z)$ al conjunto de todos los mapeos bilineales de $X times Y$ a $Z$. En espacial, si $Z = KK$
+simplemente escribimos $B(X, Y)$,
 
 #proposition[
   Si $X, Y$ son Vss. Entonces existe un isomorfismo lineal entre los siguientes espacios $B(X, Y)$ y
