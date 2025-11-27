@@ -1,10 +1,11 @@
 #import "@preview/ctheorems:1.1.3": thmbox, thmproof, thmrules
 #import "@preview/itemize:0.2.0" as el
-
+#import "@preview/fletcher:0.5.8": diagram, edge, node
 // config
 #set page(paper: "a4")
 #set text(lang: "es", font: "New Computer Modern", size: 12pt)
 #set heading(numbering: "1.")
+#set par(justify: true)
 
 #set cite(form: "prose", style: "alphanumeric")
 #show cite: set text(blue)
@@ -38,6 +39,10 @@
 #let iso = $tilde.equiv$
 #let M = $op(cal(M), limits: #true)$
 #let tensor = $times.o$
+#let seci(b, x) = math.attach(b, bl: x)
+#let secd(b, x) = $attach(#b, br: #x)$
+#let Bil(X, Y, Z) = $B(#X, #Y semi #Z)$
+#let ct = sym.circle.tiny
 
 // macros
 #show "tq": [tal que]
@@ -243,6 +248,27 @@ $
   norm(Phi(b)) & = sup{norm(T_(b)(x)): norm(x)<=1} = sup{sup{abs(T_(b)(x)(y)): norm(y) <=1}: norm(x)<=1} \
                & =
 $
+
+== Productos tensoriales
+
+Los preliminares del trabajo de Grothendieck son para normar el producto tensorial de dos espacios vectoriales, por lo
+cual es indispensable no solo definirlos sino también ver algunas de sus propiedades básicas.
+
+La idea básica que intentan responder los productos tensoriales es la siguiente: ¿Existe Vs $V$ tq $L(V, Z)$ coincida
+(que sea isomorfo) con $B(X, Y; Z)?$ La respuesta es afirmativa y aunque existe construcción explicita de tal Vs $V$.
+Empezaremos con la propiedad universal de dicho espacio.
+
+#definition([Producto tensorial #footnote[Como se muestra en @DefantFloretMR1209438]])[
+  Sean $X, Y$ Vss sobre el mismo campo $KK$. Un par $(T, tau)$ donde $T$ es un $KK$-Vs y $tau in Bil(X, Y, T)$ es
+  llamado _*producto tensorial*_ del par $(X, Y)$ si para todo $KK$-Vs $G$ y todo $Phi in Bil(X, Y, G)$ existe un único
+  $U in L(T, G)$ tq $Phi = U ct tau$, es decir, el siguiente diagrama conmuta.
+  #align(center, diagram(
+    $
+                           X times Y edge("d", tau, ->) edge(Phi, ->) & G \
+      T edge("tr", U, label-anchor: "west", label-sep: #(-0.4em), ->)
+    $,
+  ))
+]
 
 = La Desigualdad de Khintchine
 
