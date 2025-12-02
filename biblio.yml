@@ -136,3 +136,17 @@ SchattenMR36935:
     type: book
     title: Annals of Mathematics Studies
 
+Raymond2002MR1888309:
+  type: book
+  title: Introduction to tensor products of {B}anach spaces
+  author: Ryan, Raymond A.
+  date: 2002
+  publisher: Springer-Verlag London, Ltd., London
+  page-range: xiv+225
+  url: https://doi.org/10.1007/978-1-4471-3903-4
+  serial-number:
+    doi: 10.1007/978-1-4471-3903-4
+    isbn: 1-85233-437-1
+  parent:
+    type: book
+    title: Springer Monographs in Mathematics
