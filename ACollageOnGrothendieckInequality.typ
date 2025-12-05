@@ -2,7 +2,7 @@
 #import "@preview/itemize:0.2.0" as el
 #import "@preview/fletcher:0.5.8": diagram, edge, node
 // config
-#set page(paper: "a4")
+#set page(paper: "a4", numbering: "1")
 #set text(lang: "es", font: "New Computer Modern", size: 12pt)
 #set heading(numbering: "1.")
 #set par(justify: true)
@@ -54,6 +54,7 @@
 #show "Hs": [espacio de Hilbert]
 #show "Hss": [espacios de Hilbert]
 #show "Bs": [espacio de Banach]
+#show "Bss": [espacios de Banach]
 #show "rv": [variable aleatoria]
 #show "rvs": [variables aleatorias]
 
@@ -63,8 +64,9 @@
 
 #align(center)[
   #text(size: 18pt)[
-    Un Collage de la desigualdad de Grothendieck
+    Un collage de la desigualdad de Grothendieck
   ]
+
 
   #v(1cm)
 
@@ -82,16 +84,21 @@
   ]
 ]
 
+#outline()
+
+
 = Introducción
 
 En su trabajo "Résumé de la théorie métrique des produits tensoriels topologiques" @ResumeMR94682, Grothendieck hace un
 desarrollo de normas tensoriales, normas-$tensor$, previo al enunciado y demostración de lo que él llamo "théorème
-fondamental de la théorie métrique des produits tensoriels".
+fondamental de la théorie métrique des produits tensoriels". El objetivo del presente trabajo es entender porque ese
+teorema fundamental tiene como resultado una desigualdad entre matrices, la famosa _Desigualdad de Grothendieck_.
 
-Incluso el mismo menciona que se podia haber prescindido de tal desarrollo para formular y demostrar los resultado
-importantes de su "Résumé", más sin embargo es a través de tales desarrollos preliminares que se puede no solo formular
-de una manera concisa y sugerente sino también captar las relaciones entre las distintas variantes del "théorème
-fondamental" y tener una verdadera comprensión de la teoría.
+Es por ello
+// Incluso el mismo menciona que se podia haber prescindido de tal desarrollo para formular y demostrar los resultado
+// importantes de su "Résumé", más sin embargo es a través de tales desarrollos preliminares que se puede no solo formular
+// de una manera concisa y sugerente sino también captar las relaciones entre las distintas variantes del "théorème
+// fondamental" y tener una verdadera comprensión de la teoría.
 
 Es por ello que nosotros también daremos una pequeña introducción a tales preliminares.
 
@@ -182,7 +189,7 @@ $b$ es continua. Para ello tenemos que podemos hacer $X times Y$ un Vs,
 $(x_1, x_2) + (y_1, y_2) = (x_1 + y_1, x_2 * y_2)$ y $lambda(x, y) = (lambda x, lambda y)$. Entonces al igual que con
 $X$ o con $Y$, queremos dotar a $X times Y$ con una norma tq $X times Y$ sea un espacio vectorial topológico y dicha
 norma sea continua respecto a la topología de $X times Y$. Como $X$, $Y$ son normados tienen una topología entonces
-podemos considerar la topologia producto en $X times Y$.#footnote[¿Que normas coinciden con la topología producto?] Para
+podemos considerar la topologia producto en $X times Y$.#footnote[¿Qué normas coinciden con la topología producto?] Para
 ello notemos que:
 $
   b(x, y) - b(x_0, y_0) & = b(x - x_0, y - y_0) + b(x - x_0, y_0) + b(x_0, y -y_0).
@@ -254,9 +261,9 @@ $
 Los preliminares del trabajo de Grothendieck son para normar el producto tensorial de dos espacios vectoriales, por lo
 cual es indispensable no solo definirlos sino también ver algunas de sus propiedades básicas.
 
-La idea básica que intentan responder los productos tensoriales es la siguiente: ¿Existe Vs $V$ tq $L(V, Z)$ coincida
-(que sea isomorfo) con $B(X, Y; Z)?$ La respuesta es afirmativa y aunque existe construcción explicita de tal Vs $V$.
-Empezaremos con la propiedad universal de dicho espacio.
+La idea básica que intentan responder los productos tensoriales es la siguiente: ¿Existe un Vs $V$ tq $L(V, Z)$ coincida
+(que sea isomorfo) con $B(X, Y; Z)?$ La respuesta es afirmativa y aunque existe una construcción explicita de tal Vs
+$V$, empezaremos con la propiedad universal de dicho espacio.
 
 #definition([Producto tensorial #footnote[Como se muestra en @DefantFloretMR1209438]])[
   Sean $X, Y$ Vss sobre el mismo campo $KK$. Un par $(T, tau)$ donde $T$ es un $KK$-Vs y $tau in Bil(X, Y, T)$ es
@@ -269,6 +276,40 @@ Empezaremos con la propiedad universal de dicho espacio.
     $,
   ))
 ]
+
+
+=== Normas razonables y cruzadas
+
+Nos interesa normar el espacio $X tensor Y$.
+
+Como menciona @SchattenMR36935 nos interesan las normas que cumplan lo siguiente.
+#definition[_norma cruzada_][
+  Una norma $alpha$ sobre $X tensor Y$ se dice cruzada si cumple que:
+  $
+    alpha(X tensor Y) = norm(x) norm(y)
+  $
+]
+
+Grothendieck en su "Résumé" introdujo el termino de norma _razonable_ la cual cumple que es cruzada. A continuación
+damos una una definición que es equivalente a la dada por Grothendieck.
+#definition[_norma razonable_][
+  Sean $X$ y $Y$ Bss (sobre el mismo campo). Una norma $alpha$ sobre $X tensor Y$ se dice _razonable cruzada_ si $alpha$
+  satisface las siguientes condiciones:
+  + para $x in X$ y $y in Y$, se debe cumplir
+    $
+      alpha(x tensor y) <= norm(x) norm(y),
+    $
+  + para $x^* in X^*$ y $y^* in Y^*$, $x^* tensor y^* in (X tensor Y, alpha)$, y
+    $
+      norm(x^* tensor y^*) <= norm(x^*) norm(y^*).
+    $
+]
+
+Como menciona Grothendieck dado $X tensor Y$ existen una _menor norma razonable y cruzada_ y una _mayor norma razonable
+y cruzada_
+
+La norma Proyectiva cumple una propiedad universal muy parecida a la del producto tensorial.
+
 
 = La Desigualdad de Khintchine
 
@@ -381,7 +422,7 @@ Version que se encuentra en @Garling_2007
 
 = La Desigualdad de Grothendieck.
 
-Ahora veamos la Demostración del Teorema más importante, nuestro objetivo principal.
+Ahora veamos la demostración del Teorema más importante, nuestro objetivo principal.
 
 Primera version, extraída de @Tomczak-Jaegermann1989
 #theorem[
