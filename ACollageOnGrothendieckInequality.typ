@@ -39,10 +39,12 @@
 #let iso = $tilde.equiv$
 #let M = $op(cal(M), limits: #true)$
 #let tensor = $times.o$
+// #let tensor_p = $attach(tensor, br: pi)$
 #let seci(b, x) = math.attach(b, bl: x)
 #let secd(b, x) = $attach(#b, br: #x)$
 #let Bil(X, Y, Z) = $B(#X, #Y semi #Z)$
 #let ct = sym.circle.tiny
+#let span = "span"
 
 // macros
 #show "tq": [tal que]
@@ -57,6 +59,7 @@
 #show "Bss": [espacios de Banach]
 #show "rv": [variable aleatoria]
 #show "rvs": [variables aleatorias]
+#show "tp": [producto tensorial]
 
 
 #show "sucesion": [sucesión]
@@ -261,22 +264,28 @@ $
 Los preliminares del trabajo de Grothendieck son para normar el producto tensorial de dos espacios vectoriales, por lo
 cual es indispensable no solo definirlos sino también ver algunas de sus propiedades básicas.
 
-La idea básica que intentan responder los productos tensoriales es la siguiente: ¿Existe un Vs $V$ tq $L(V, Z)$ coincida
-(que sea isomorfo) con $B(X, Y; Z)?$ La respuesta es afirmativa y aunque existe una construcción explicita de tal Vs
-$V$, empezaremos con la propiedad universal de dicho espacio.
+El objetivo principal de los productos tensoriales es linealizar mapeos bilineales, en el sentido de que $L(V, Z)$ y
+$B(X, Y semi Z)$ sean isomorfismos. Lo anterior se expresa mejor con la siguiente propiedad universal del producto
+tensorial, y por tanto dados $X$, $Y$ Vss podemos hablar _de su_ producto tensorial de manera única.
 
 #definition([Producto tensorial #footnote[Como se muestra en @DefantFloretMR1209438]])[
-  Sean $X, Y$ Vss sobre el mismo campo $KK$. Un par $(T, tau)$ donde $T$ es un $KK$-Vs y $tau in Bil(X, Y, T)$ es
-  llamado _*producto tensorial*_ del par $(X, Y)$ si para todo $KK$-Vs $G$ y todo $Phi in Bil(X, Y, G)$ existe un único
-  $U in L(T, G)$ tq $Phi = U ct tau$, es decir, el siguiente diagrama conmuta.
+  Sean $X, Y$ Vss sobre el mismo campo $KK$. El _*producto tensorial*_ $(X tensor Y, tensor)$ es un par, donde
+  $X tensor Y$ es un $KK$-Vs y $tensor in Bil(X, Y, X tensor Y)$ es tq para todo $KK$-Vs $G$ y todo
+  $Phi in Bil(X, Y, G)$ existe un único $U in L(T, G)$ tq $Phi = U ct tensor$, es decir, el siguiente diagrama conmuta.
   #align(center, diagram(
     $
-                           X times Y edge("d", tau, ->) edge(Phi, ->) & G \
-      T edge("tr", U, label-anchor: "west", label-sep: #(-0.4em), ->)
+                                 X times Y edge("d", tensor, ->) edge(Phi, ->) & G \
+      X tensor Y edge("tr", U, label-anchor: "west", label-sep: #(-0.4em), ->)
     $,
   ))
 ]
 
+La construcción del producto tensorial es como sigue. Sean $X, Y$ dos Vss. Dados $x in X$, $y in Y$ definimos
+$x tensor y in B(X, Y)'$ como
+$
+  (x tensor y) (A) = A(x, y), wide "para todo" A in B(X, Y).
+$
+Entonces $X tensor y := span{x tensor y: x in X, y in Y}$.
 
 === Normas razonables y cruzadas
 
@@ -308,7 +317,31 @@ damos una una definición que es equivalente a la dada por Grothendieck.
 Como menciona Grothendieck dado $X tensor Y$ existen una _menor norma razonable y cruzada_ y una _mayor norma razonable
 y cruzada_
 
-La norma Proyectiva cumple una propiedad universal muy parecida a la del producto tensorial.
+#definition[Norma Proyectiva][
+  La norma proyectiva $pi$ sobre el producto tensorial $X tensor Y$ entre dos Nss $X$, $Y$ se define como:
+  $
+    pi(u) = inf{sum_(i=1)^n norm(x_i) norm(y_i): u = sum_(i=1)^n x_i tensor y_i}.
+  $
+]
+#proposition[
+  Sean $X$, $Y$ Bss. Entonces $pi$ es una norma sobre $X tensor Y$ y ademas $pi(x tensor y) = norm(x) norm(y)$, es
+  decir, $pi$ es razonable cruzada.
+]
+
+Detonaremos por $X tensor_pi Y$ al producto tensorial $X tensor Y$ junto con la norma $pi$. Y denotamos a su
+completación como $X hat(tensor)_pi Y$.
+
+Notemos que dado $x in X$, $y in Y$ podemos definir $B_(x, y) in B(X', Y')$ dado por
+$B_(x, y)(phi, psi) = phi(x)psi(y)$. Luego, por la propiedad universal del tp tenemos que existe mapeo único de
+$X tensor Y$ a $B(X', Y')$ tq $x tensor y |-> B_(x, y)$, y por tanto tenemos un embedimiento
+$X tensor Y subset B(X', Y')$. La norma inyectiva es la inducida por tal embedimiento.
+
+#definition[Norma inyectiva][
+  La norma inyectiva $epsilon$ sobre el producto tensorial $X tensor Y$ entre dos Nss $X$, $Y$ se define como:
+  $
+    epsilon(u) = sup{abs(sum_(i=1)^n phi(x_i)psi(y_i)): u = sum_(i=1)^n x_i tensor y_i, phi in B_X', psi in B_Y'}.
+  $
+]
 
 
 = La Desigualdad de Khintchine
