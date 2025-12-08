@@ -1,6 +1,9 @@
 #import "@preview/ctheorems:1.1.3": thmbox, thmproof, thmrules
 #import "@preview/itemize:0.2.0" as el
 #import "@preview/fletcher:0.5.8": diagram, edge, node
+#import "../definitions.typ": *
+
+
 // config
 #set page(paper: "a4", numbering: "1")
 #set text(lang: "es", font: "New Computer Modern", size: 12pt)
@@ -20,49 +23,14 @@
 #show: thmrules
 #show: el.default-enum-list
 #show: el.config.ref
+#show: apply_definitions
 // envs
 #let definition = thmbox("definition", "Definición", inset: 0em)
 #let theorem = thmbox("theorem", "Teorema", inset: 0em)
 #let proposition = thmbox("proposition", "Proposición", inset: 0em)
 #let proof = thmproof("proof", "Demostración", inset: 0em)
 
-// functions
-#let ip(x, y) = $chevron.l #x, #y chevron.r$
 
-// variables
-#let l = $cal(l)$
-#let epsa = $epsilon.alt$
-#let dt = $d t$
-#let sign = "sign"
-#let L = $L_2[0, 1]$
-#let du(X) = $#X'$
-#let iso = $tilde.equiv$
-#let M = $op(cal(M), limits: #true)$
-#let tensor = $times.o$
-// #let tensor_p = $attach(tensor, br: pi)$
-#let seci(b, x) = math.attach(b, bl: x)
-#let secd(b, x) = $attach(#b, br: #x)$
-#let Bil(X, Y, Z) = $B(#X, #Y semi #Z)$
-#let ct = sym.circle.tiny
-#let span = "span"
-
-// macros
-#show "tq": [tal que]
-#show "tsq": [tales que]
-#show "Vs": [espacio vectorial]
-#show "Vss": [espacios vectoriales]
-#show "Ns": [espacio normado]
-#show "Nss": [espacio normados]
-#show "Hs": [espacio de Hilbert]
-#show "Hss": [espacios de Hilbert]
-#show "Bs": [espacio de Banach]
-#show "Bss": [espacios de Banach]
-#show "rv": [variable aleatoria]
-#show "rvs": [variables aleatorias]
-#show "tp": [producto tensorial]
-
-
-#show "sucesion": [sucesión]
 // layout
 
 #align(center)[
@@ -665,4 +633,4 @@ También tenemos la siguiente version dada en @Wojtaszczyk_1991 que depende de o
 ]
 
 
-#bibliography("biblio.yml", full: true)
+#bibliography("../biblio.yml", full: true)
