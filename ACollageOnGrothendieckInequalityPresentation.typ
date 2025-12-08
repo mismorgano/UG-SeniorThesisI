@@ -1,6 +1,6 @@
 #import "@preview/touying:0.6.1": *
 #import "@preview/datify:1.0.0"
-#import themes.university: *
+#import "themes/university.typ": *
 
 #let date = datetime(day: 10, month: 12, year: 2025)
 
