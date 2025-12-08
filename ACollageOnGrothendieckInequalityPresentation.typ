@@ -1,8 +1,13 @@
 #import "@preview/touying:0.6.1": *
 #import "@preview/datify:1.0.0"
 #import "themes/university.typ": *
+#import "@preview/theorion:0.4.1": *
+#import cosmos.clouds: *
+
 
 #let date = datetime(day: 10, month: 12, year: 2025)
+
+#show: show-theorion
 
 #show: university-theme.with(
   aspect-ratio: "16-9",
@@ -14,8 +19,11 @@
     logo: emoji.leaf.herb,
   ),
   header-right: self => box(utils.display-current-heading(level: 1)) + h(.3em) + self.info.logo,
+  config-common(frozen-counters: (theorem-counter)),
 )
+
 #set par(justify: true)
+#let theorem = theorem.with(fill: rgb("#1b7491aa"))
 
 #title-slide(
   authors: (
@@ -31,33 +39,31 @@
   logo: none,
 )
 
-= First slide
+= Introducción
 
-== Second Slide
+= Desigualdad de Khintchine
 
-#lorem(100)
+==
+#definition[
 
-== Third slide
+]
+#theorem(title: "Desigualdad de Khintchine")[
 
-#lorem(100)
+]
+#proposition[]
+
+= Desigualdad de Grothendieck
+
+==
+#theorem(title: "Desigualdad de Grothendieck")[
+
+]
+= Usos y aplicaciones
+
+
+#bibliography("biblio.yml")
 
 #slide()[
   #set text(size: 16pt)
-  #bibliography("biblio.yml", full: true)
+  // #bibliography("biblio.yml", full: true)
 ]
-
-// #set rect(
-//   width: 100%,
-//   height: 100%,
-//   inset: 4pt,
-// )
-
-// #set page(
-//   paper: "iso-b7",
-//   header: rect(fill: aqua)[Header],
-//   footer: pad(x: -1em,rect(fill: aqua)[Footer]),
-//   number-align: center,
-//   footer-descent: 1pt
-// )
-
-// #rect(fill: aqua.lighten(40%))
