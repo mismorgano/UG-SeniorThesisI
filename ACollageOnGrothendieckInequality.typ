@@ -92,6 +92,17 @@
 
 = Introducción
 
+El objetivo de este trabajo es presentar la demostración de un resultado fundamental de la Teoría de Operadores en
+espacios de Banach, conocido como la _Desigualdad de Grothendieck_. Este resultado ha tenido un gran impacto en las
+matemáticas, como muestaran sus múltiples aplicaciones en distintas áreas de las matemáticas, como el análisis armónico,
+la teoría de la computación o la optimización.
+
+
+ha tenido un gran impacto en las matemáticas, que se ve reflejado en suso son A. Grothendieck presenta esta desigualdad
+bajo el nombre de "théorème fondamental de la théorie métrique des produits tensoriels", dentro de su artículo publicado
+en 1956 y titulado "Résumé de la théorie métrique des produits tensoriels topologiques" @ResumeMR94682.
+
+
 En su trabajo "Résumé de la théorie métrique des produits tensoriels topologiques" @ResumeMR94682, Grothendieck hace un
 desarrollo de normas tensoriales, normas-$tensor$, previo al enunciado y demostración de lo que él llamo "théorème
 fondamental de la théorie métrique des produits tensoriels". El objetivo del presente trabajo es entender porque ese
