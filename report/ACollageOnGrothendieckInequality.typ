@@ -62,7 +62,7 @@
 
 El objetivo de este trabajo es presentar la demostración de un resultado fundamental de la Teoría de Operadores en
 espacios de Banach, conocido como la _Desigualdad de Grothendieck_. Este resultado ha tenido un gran impacto en las
-matemáticas, como muestaran sus múltiples aplicaciones en distintas áreas de las matemáticas, como el análisis armónico,
+matemáticas, como muestran sus múltiples aplicaciones en distintas áreas de las matemáticas, como el análisis armónico,
 la teoría de la computación o la optimización.
 
 
@@ -369,7 +369,7 @@ La siguiente version la podemos encontrar en @jarchow1995absolutely #theorem[Des
   $
     integral_0^1 e^(f(t)) dt = integral_0^1 exp(sum_(n <= m) a_n r_(n)(t)) dt = integral_0^1 product_(n<=m) exp(a_n r_(n)(t)) dt,
   $
-  como las $r_n$ son rvs independientes se cumple que
+  como las $r_n$ son Rvs independientes se cumple que
   $
     integral_0^1 e^(f(t)) dt &= product_(n<=m) integral_0^1 exp(a_n r_(n)(t)) dt = product_(n<=m) integral_0^1 1/2 e^(a_n) + 1/2 e^(-a_n) dt \
     &= product_(n<=m) cosh(a_n),
@@ -424,7 +424,7 @@ La siguiente version la podemos encontrar en @jarchow1995absolutely #theorem[Des
 Version que se encuentra en @Garling_2007
 #theorem[Desigualdad de Khintchine][
   Existen constantes $A_p$ y $B_p$, para $0 < p < infinity$, tq si $a_1, dots, a_N$ son números reales y
-  $epsa_1, dots, epsa_N$ son rvs Bernoulli, entonces
+  $epsa_1, dots, epsa_N$ son Rvs Bernoulli, entonces
   $
     A_p norm(s_N)_p <= sigma <= B_p norm(s_N)_p,
   $
@@ -476,15 +476,7 @@ es decir, se cumple la desigualdad contraria.
 
 
 #proof[
-  #let triple(x) = $bar.v.triple #x bar.v.triple$
-
-
-  #let xl = $X^(L)$
-  #let xu = $X^(U)$
-  #let yl = $Y^(L)$
-  #let yu = $Y^(U)$
-  #let xi = $X_i$
-  #let yj = $Y_j$
+  
   Supondremos que las matrices son reales al igual que los Hs. Por simplicidad, definamos:
   $
     norm(a) := sup{ abs(sum_(i, j) a_(i, j) s_i t_j): abs(s_i) <=1, abs(t_j) <=1}
@@ -503,11 +495,11 @@ es decir, se cumple la desigualdad contraria.
   $x in H$, como $H$ tiene base ortonormal ${e_n}_n$ sabemos que $x = sum_n ip(x, e_n) e_n$ y ademas
   $infinity > norm(x) = sum_(n) ip(x, e_n)$, asi podemos definir $X:[0, 1] -> RR$ como
   $
-    X(t) := sum_(n) ip(x, e_n)r_n(t).
+    X(t) := sum_(n) ip(x, e_n)r_(n)(t).
   $
   Luego, por la ortonormalidad de las funciones de Rademacher tenemos que
   $
-    norm(X)_2^2 = integral_0^1 X(t)^2 dt = integral_0^1 abs(sum_(n) ip(x, e_n)r_n(t))^2 dt = integral_0^1 sum_(n) ip(x, e_n)^2 dt = norm(x)^2,
+    norm(X)_2^2 = integral_0^1 X(t)^2 dt = integral_0^1 abs(sum_(n) ip(x, e_n)r_(n)(t))^2 dt = integral_0^1 sum_(n) ip(x, e_n)^2 dt = norm(x)^2,
   $
   por lo cual $norm(X)_2 = norm(x)$ y ademas, si $y in H$ al igual que con $x$ podemos definir $Y:[0, 1] -> infinity$ y
   tenemos que
@@ -530,7 +522,7 @@ es decir, se cumple la desigualdad contraria.
   $
     abs(xu(t)) = cases(0 & "si" abs(X(t))<=M, abs(X(t)) - M & "si" abs(X(t))> M),
   $
-  mas aun, usando la siguiente desigualdad $s<= m + (s^2)/4m$, con $s, m > 0$, tenemos que
+  mas aun, usando la siguiente desigualdad $s<= m + (s^2)/(4m)$, con $s, m > 0$, tenemos que
   $
     abs(X(t)) <= M + (abs(X(t))^2)/(4M) ==> abs(xu(t)) <= abs(X(t))^2/(4M).
   $
@@ -540,7 +532,7 @@ es decir, se cumple la desigualdad contraria.
   $
   donde la ultimo desigualdad se da pues $B_4 <= 3^(1/4)$. Lo anterior implica que para $x in B_H$ se cumple que
   $norm(xu)_2 <= sqrt(3)/(4M)$. Por ultimo, primero notemos que $X = xu + xl$, por lo cual
-  $X Y = (xu + xl)(yu + yl) = (xu + xl)(yl) + (X)(yu) = xl yl + (xu yl + x yu)$. Luego, si $x_1, dots, x_n$ y
+  $X Y = (xu + xl)(yu + yl) = (xu + xl)(yl) + (X)(yu) = xl yl + (xu yl + X yu)$. Luego, si $x_1, dots, x_n$ y
   $y_1, dots, y_n in B_H$, usando lo anterior y la desigualdad del trianguló se cumple que
   $
     abs(sum_(i, j) a_(i j) ip(x_i, y_i)) &= abs(integral_0^1 sum_(i, j) a_(i, j) xi(t) yj(t) dt) \
