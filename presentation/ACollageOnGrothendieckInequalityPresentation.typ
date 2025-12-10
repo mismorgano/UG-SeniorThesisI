@@ -16,6 +16,7 @@
   config-info(
     title: [Un collage sobre la desigualdad de Grothendieck],
     subtitle: [Seminario de titulación I],
+    institution: [Universidad de Guanajuato \ #image("../img/demat.png", width: 10%)],
     author: [Antonio Barragán Romero \ Maite Fernández Unzueta],
     date: datify.custom-date-format(date, lang: "es"),
     logo: emoji.leaf.herb,
@@ -26,7 +27,7 @@
 
 #show math.equation.where(block: false): box
 
-
+// #set math.equation(numbering: "(1)")
 #set par(justify: true)
 #set text(lang: "es")
 #let theorem = theorem.with(fill: rgb("#1b7491aa"))
@@ -55,7 +56,20 @@ la teoría de la computación o la optimización.
 
 = Desigualdad de Khintchine
 
-==
+== Funciones de Rademacher
+
+Las funciones de Rademacher $r_n: [0, 1]->RR$, $n in NN$ se definen como:
+$
+  r_(n)(t) = sign(sin(2^n pi t)).
+$
+Gráficamente se ven así
+#align(center, image("../img/rademacher_functions.png"))
+El conjunto ${r_n}$ forma un conjunto ortonormal en $L_2[0, 1]$, es decir,
+$
+  integral_0^1 abs(sum_(n) a_n r_(n)(t))^2 dt = sum_(n) abs(a_n)^2.
+$
+
+== Desigualdad de Khintchine
 
 #theorem(title: "Desigualdad de Khintchine")[
   Para todo $0 < p < infinity$ existen constantes positivas $A_p$ y $B_p$ tsq para toda sucesión de escalares
@@ -65,7 +79,7 @@ la teoría de la computación o la optimización.
   $
 ]<Khintchine_inequality>
 *Observaciones*
--
+- Los valores $A_p$ y $B_p$ son conocidos, en especial $B_4 <= 3^(1slash 4)$.
 // #slide(repeat: 3, self => [
 //   #let (uncover, only, alternatives) = utils.methods(self)
 
@@ -136,11 +150,11 @@ la teoría de la computación o la optimización.
     ]
     // #pause
     #only_uncover("2-4")[
-      - Basta considerar $a_1, dots, a_m$ finitos.
+      - Basta considerar $a_1, dots, a_m$ finitos. el resultado se sigue por un proceso limite.
     ]
     // #pause
     #only_uncover("3-4")[
-      - Dados $a_1, dots, a_m$ utilizar las funciones de Rademacher $r_n in L[0, 1]_p$ para definir
+      - Dados $a_1, dots, a_m$ utilizar las funciones de Rademacher $r_n in L_p[0, 1]$ para definir
         $
           f(t) := sum_(n <= m) a_n r_(n)(t)
         $
@@ -149,14 +163,14 @@ la teoría de la computación o la optimización.
       - Acotar $f$ usando $abs(y)^p <= p!(1 + abs(y)^p slash p!) <= p! e^abs(y)$ para así acotar su norma
         $
           norm(f)_p^p = integral_0^1 abs(f(t))^p dt <= p! integral_0^1 e^abs(f(t)) dt <= p! integral_0^1 (e^f(t) + e^(-f(t)) ) dt.
-        $
+        $<norm_p_bounded_by_exponential>
     ]
 
     #only_uncover("5-7")[
       - Normalizamos $f$ por su norma $L_2$ tq $norm(f)_2 = (sum_(n <= m) a_n^2 )^(1 slash 2) = 1$
     ]
     #only_uncover("6-7")[
-      - Estimar la cota de *falta algo* usando la independencia de las $r_n$ y lo anterior
+      - Por la independencia de las $r_n$ y usando que $norm(f)_2 = 1$ obtenemos que
         $
           p! integral_0^1 e^(f(t)) dt <= p! e^(1 slash 2),
         $
@@ -170,8 +184,9 @@ la teoría de la computación o la optimización.
         $
     ]
     #only("7-")[
-      - Para $0 < p < 2$ usar Holder con $0 < theta<1$ tq $theta = 1 slash (2 - p slash 2)$ y usando el caso $p=4$ para
-        obtener
+      - Para $0 < p < 2$ tomemos $0 < theta<1$ tq $theta = 1 slash (2 - p slash 2)$, así $1 slash theta >1$ y su
+        conjugado es $1 slash (1-theta)$. Notemos que $2 = p theta + 4(1-theta)$, aplicando la desigualdad de Hölder y
+        usando el caso $p=4$ se obtiene que:
         $
           B_4^(2 - 4 slash p) norm(g)_2 <= norm(g)_p <= norm(g)_2
         $
@@ -180,7 +195,29 @@ la teoría de la computación o la optimización.
 ])
 = Desigualdad de Grothendieck
 
-==
+== Distintas formulaciones.
+
+En @Wojtaszczyk_1991 podemos encontrar la siguiente formulación.
+#theorem(title: "Grothendieck")[
+  Todo operador (continuo) $T:L_1(mu)->H$, donde $H$ es un Hs, es $1$-absolutamente sumante.
+]
+
+La version con productos tensoriales dada por Grothendieck en @ResumeMR94682
+#theorem(title: "théorème fondamental de la théorie métrique des produits tensoriels")[
+  Para cualquier $F in C(S) tensor C(T)$ se cumple que
+  $
+    norm(F)_and <= K norm(F)_H,
+  $
+  donde $K$ es una constante universal.
+]
+
+Pisier en @PisierMR2888168 tiene una
+== La desigualdad
+
+En @LindenstraussPelczynskiMR231188 Lindenstrauss y Pelczyski dan varias reformulaciones entre ellas una equivalente al
+siguiente Teorema y que se encuentra en @jarchow1995absolutely.
+
+
 #theorem(title: "Desigualdad de Grothendieck")[
   Existe una constante universal $K_G$ para la cual, dado cualquier Hs $H$, cualquier $n in NN$, y cualquier matriz
   escalar $(a_(i j))$ y cualesquiera vectores en $x_1, dots, x_n, y_1, dots, y_n in B_H$, tenemos que
@@ -189,7 +226,13 @@ la teoría de la computación o la optimización.
   $
 ]
 
+==
+
 *Observaciones*
+
+- La constante universal $K_G$ depende del campo escalar $RR$ o $CC$. Actualmente conocer su valor exacto es un problema
+  abierto.
+- En nuestro caso trabajamos en $RR$.
 - Como siempre consideramos una cantidad finita de elementos en $H$, basta que $H$ sea separable, sea ${e_n}_n$ su
   conjunto ortogonal numerable.
 #slide(repeat: 10, self => [
@@ -288,8 +331,22 @@ la teoría de la computación o la optimización.
 
 = Usos y aplicaciones
 
+== En Computación
 
-#bibliography("../biblio.yml")
+En @AssafNaor10.1145 se da un algoritmo de aproximación eficiente el combina programación semi-definida con una técnica
+de redondeo basado en la desigualdad de Grothendieck.
+
+#align(center, figure(image("../img/maxcut-cutnorm.png"), caption: [MAXCUT y CUTNORM]))
+
+en @AssafNaor10.1002 se investigan conexiones de la desigualdad de Grothendieck con optimización combinatoria y
+complejidad computacional.
+
+==
+En @PisierMR2888168 se presenta una revision del impacto de la Teorema de Grothendieck en distintas areas.
+#align(center, figure(image("../img/various applications.png"), caption: [Grothendieck's Theorem, past and present.]))
+==
+#set text(size: 23pt)
+#bibliography("../biblio.yml", full: true)
 
 #slide()[
   #set text(size: 16pt)
