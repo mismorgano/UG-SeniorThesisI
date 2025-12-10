@@ -150,3 +150,58 @@ Raymond2002MR1888309:
   parent:
     type: book
     title: Springer Monographs in Mathematics
+
+AssafNaor10.1145:
+  type: article
+  title: Approximating the cut-norm via Grothendieck's inequality
+  author:
+  - Alon, Noga
+  - Naor, Assaf
+  date: 2004
+  url: https://doi.org/10.1145/1007352.1007371
+  serial-number:
+    doi: 10.1145/1007352.1007371
+    isbn: '1581138520'
+  parent:
+    type: proceedings
+    publisher:
+      name: Association for Computing Machinery
+      location: Chicago, IL, USA
+    parent:
+      type: proceedings
+      title: STOC '04
+
+AssafNaor10.1002:
+  type: article
+  title: Grothendieck-Type Inequalities in Combinatorial Optimization
+  author:
+  - Khot, Subhash
+  - Naor, Assaf
+  date: 2012
+  page-range: 992-1035
+  url: https://onlinelibrary.wiley.com/doi/abs/10.1002/cpa.21398
+  serial-number:
+    doi: https://doi.org/10.1002/cpa.21398
+  abstract: Abstract We survey connections of the Grothendieck inequality and its variants to combinatorial optimization and computational complexity. © 2011 Wiley Periodicals, Inc.
+  parent:
+    type: periodical
+    title: Communications on Pure and Applied Mathematics
+    issue: 7
+    volume: 65
+
+PisierMR2888168:
+  type: article
+  title: Grothendieck's theorem, past and present
+  author: Pisier, Gilles
+  date: 2012
+  page-range: 237-323
+  url: https://doi.org/10.1090/S0273-0979-2011-01348-9
+  serial-number:
+    doi: 10.1090/S0273-0979-2011-01348-9
+    issn: 0273-0979,1088-9485
+  parent:
+    type: periodical
+    title: Bull. Amer. Math. Soc. (N.S.)
+    issue: 2
+    volume: 49
+
